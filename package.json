@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:chafilin/connected-react-socket.git",
   "author": "Chafilin <chafiliny@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^5.10.0"
+  }
 }

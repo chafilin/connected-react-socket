@@ -1,0 +1,10 @@
+# Editor configurations
+.vscode
+
+# Build folders
+dist
+
+# Test folders
+coverage
+
+node_modules
