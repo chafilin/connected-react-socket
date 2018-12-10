@@ -6,7 +6,13 @@
   "repository": "git@github.com:chafilin/connected-react-socket.git",
   "author": "Chafilin <chafiliny@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "eslint": "^5.10.0"
+  "peerDependencies": {
+    "react": "^16.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-plugin-react": "^7.11.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
   }
 }
