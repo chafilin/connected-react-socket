@@ -1,3 +1,3 @@
-import Provider from "./Provider"
+import ConnectedSocket from "./ConnectedSocket"
 
-export {Provider}
+export {ConnectedSocket}
