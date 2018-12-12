@@ -1,9 +1,11 @@
 import { createStore } from 'redux'
+import {socketReducer} from '../src'
 
-const simpleReducer =(state={},  action)=>{
-  switch (action.type){
-    default: return state
-  }
-}
+const store = createStore(socketReducer)
 
-export const store = createStore(simpleReducer)
+store.subscribe(()=>{
+  const state = store.getState()
+  console.log(state)
+})
+
+export default store

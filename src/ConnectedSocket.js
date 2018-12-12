@@ -1,11 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
 import Context from './Context'
+import { handleSocketAction } from "./action";
 
 class ConnectedSocket extends React.Component {
 	constructor(props){
 		super(props)
-		this.state ={
+		this.state = {
 			payload: null
 		}
 	}
@@ -17,7 +18,7 @@ class ConnectedSocket extends React.Component {
 				type, data
 			}
 			this.setState({payload})
-			dispatch({type: 'SOCKET_ACTION', payload})
+			dispatch(handleSocketAction(payload))
 		}
 	}
 	render(){

@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 
 import { ConnectedSocket,withSocket } from '../src'
-import { store } from './store'
+import store  from './store'
 
 import {socket} from'./socket'
 
