@@ -1,3 +1,3 @@
 # connected-react-socket
 
-HOC provide socket.io connection for react-redux application
+Provider for socket.io connection for react-redux application
