@@ -1,11 +1,10 @@
-import { createStore } from 'redux'
-import {socketReducer} from '../src'
+import { createStore,combineReducers } from 'redux'
+import { socketReducer } from '../src'
 
-const store = createStore(socketReducer)
-
-store.subscribe(()=>{
-  const state = store.getState()
-  console.log(state)
+const reducers = combineReducers({
+  socket: socketReducer
 })
+
+const store = createStore(reducers,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 export default store
