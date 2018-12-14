@@ -18,7 +18,7 @@ class ConnectedSocket extends React.Component {
 		const {socket, dispatch} = this.props
 		socket.onevent = (msg) => {
 			const [type, ...data] = msg.data
-			const payload ={
+			const payload = {
 				type, data,
 			}
 			this.setState({payload})

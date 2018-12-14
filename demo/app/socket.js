@@ -7,5 +7,4 @@ socket.on('connect',()=>{
 	console.log('Connect')
 })
 
-
 export {socket}

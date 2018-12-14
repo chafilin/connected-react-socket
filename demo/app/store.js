@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { createStore,combineReducers } from 'redux'
-import { socketReducer } from '../src'
+import { socketReducer } from '../../src'
 
 const reducers = combineReducers({
   socket: socketReducer,
