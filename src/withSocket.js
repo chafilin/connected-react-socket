@@ -12,8 +12,8 @@ function withSocket (WrappedComponent) {
    */
   class WithSocket extends React.Component {
     render(){
-      const {context} = this
-      return <WrappedComponent socketEvent = {context} {...this.props}/>
+      const {payload,emit} = this.context
+      return <WrappedComponent socketEvent = {payload} emit={emit} {...this.props}/>
     }
   }
 

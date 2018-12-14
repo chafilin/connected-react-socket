@@ -10,7 +10,7 @@ import store  from './store'
 import {socket} from'./socket'
 
 const Display = (props) =>{
-  const {socketEvent, name} = props
+  const {socketEvent, name, emit} = props
   return (
   <div>
     <h2>Event from {name}:</h2>
@@ -20,6 +20,7 @@ const Display = (props) =>{
     {socketEvent && socketEvent.type==='id' && (
       <div>Your id is <b>{socketEvent && socketEvent.data[0]}</b> </div>
     )}
+    <button onClick={()=>emit('reset',...socketEvent.data)}>Reset</button>
   </div>)
 }
 
@@ -28,8 +29,13 @@ const mapStateToProps = state =>{
     socketEvent: state.socket
   }
 }
+const mapDispatchToProps = dispatch =>{
+  return {
+    emit: ()=>console.log('WIP')
+  }
+}
 
-const ConnectedDisplay = connect(mapStateToProps)(Display)
+const ConnectedDisplay = connect(mapStateToProps, mapDispatchToProps)(Display)
 
 const DisplayEvent = withSocket(Display)
 

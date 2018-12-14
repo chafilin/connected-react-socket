@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import Context from './Context'
-import { handleSocketAction } from "./action";
+import { handleSocketAction } from "./actions";
 import PropTypes from 'prop-types'
 
 /**
@@ -11,11 +11,11 @@ class ConnectedSocket extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			payload: null,
+      payload: null,
 		}
 	}
 	componentDidMount(){
-		const {socket, dispatch} = this.props
+    const {socket, dispatch} = this.props
 		socket.onevent = (msg) => {
 			const [type, ...data] = msg.data
 			const payload = {
@@ -26,10 +26,10 @@ class ConnectedSocket extends React.Component {
 		}
 	}
 	render(){
-		const {children} = this.props
+		const {children,socket} = this.props
 		const {payload} = this.state
 		return (
-			<Context.Provider value={payload}>
+			<Context.Provider value={{payload,emit: (type, ...rest) => socket.emit(type, ...rest)}} >
 				{children}
 			</Context.Provider>
 		)

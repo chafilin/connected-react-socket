@@ -14,7 +14,10 @@ io.on('connection', function(socket){
     const timer = Math.floor((new Date()-connections[id].startTime)/1000);
 		socket.emit('time',timer)
 	}, 1000);
-	socket.emit('id', id)
+  socket.emit('id', id)
+  socket.on('reset', function(){
+    connections[id].startTime = new Date()
+  })
   socket.on('disconnect', function(){
 		const { interval } = connections[id]
 		clearInterval(interval);
