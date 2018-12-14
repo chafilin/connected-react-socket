@@ -2,7 +2,7 @@
 /* eslint-disable */
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider as ReduxProvider } from 'react-redux'
+import { Provider as ReduxProvider,connect } from 'react-redux'
 
 import { ConnectedSocket,withSocket } from '../../src'
 import store  from './store'
@@ -10,15 +10,26 @@ import store  from './store'
 import {socket} from'./socket'
 
 const Display = (props) =>{
-  const {socketEvent} = props
-  console.log(socketEvent)
+  const {socketEvent, name} = props
   return (
   <div>
-    <h2>Event:</h2>
-    <div>{socketEvent && socketEvent.type}</div>
-    <div>{socketEvent && socketEvent.data[0]}</div>
+    <h2>Event from {name}:</h2>
+    {socketEvent && socketEvent.type==='time' && (
+      <div>Server time is {socketEvent && socketEvent.data[0]} </div>
+    )}
+    {socketEvent && socketEvent.type==='id' && (
+      <div>Your id is <b>{socketEvent && socketEvent.data[0]}</b> </div>
+    )}
   </div>)
 }
+
+const mapStateToProps = state =>{
+  return {
+    socketEvent: state.socket
+  }
+}
+
+const ConnectedDisplay = connect(mapStateToProps)(Display)
 
 const DisplayEvent = withSocket(Display)
 
@@ -26,7 +37,8 @@ const App = () => (
   <ReduxProvider store={store}>
     <ConnectedSocket socket={socket}>
       <h1>Demo page</h1>
-      <DisplayEvent/>
+      <DisplayEvent name="WithSocket"/>
+      <ConnectedDisplay name="connect"/>
     </ConnectedSocket>
   </ReduxProvider>
 )
