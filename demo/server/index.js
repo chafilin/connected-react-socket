@@ -21,18 +21,6 @@ io.on('connection', function(socket){
   });
 });
 
-app.get('/new',(req,res)=>{
-	console.log('Emmit new')
-	io.emit('new', {world:'hello'}, {world:'hello'})
-	res.send('Sended')
-})
-
-app.get('/old',(req,res)=>{
-	console.log('Emmit old')
-	io.emit('old', {world:'hello'})
-	res.send('Sended old')
-})
-
 http.listen(8081, function(){
   console.log('listening on *:8081');
 });
