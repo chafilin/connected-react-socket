@@ -8,9 +8,11 @@ const connections = {};
 io.on('connection', function(socket){
 	console.log('a user connected');
 	const {id} = socket
-	connections[id] = { socket };
+  connections[id] = { socket };
+  connections[id].startTime = new Date()
 	connections[id].interval = setInterval(()=>{
-		socket.emit('time',new Date())
+    const timer = Math.floor((new Date()-connections[id].startTime)/1000);
+		socket.emit('time',timer)
 	}, 1000);
 	socket.emit('id', id)
   socket.on('disconnect', function(){

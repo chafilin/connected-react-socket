@@ -15,7 +15,7 @@ const Display = (props) =>{
   <div>
     <h2>Event from {name}:</h2>
     {socketEvent && socketEvent.type==='time' && (
-      <div>Server time is {socketEvent && socketEvent.data[0]} </div>
+      <div>Server timer is {socketEvent && socketEvent.data[0]} </div>
     )}
     {socketEvent && socketEvent.type==='id' && (
       <div>Your id is <b>{socketEvent && socketEvent.data[0]}</b> </div>
