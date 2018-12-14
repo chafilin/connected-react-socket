@@ -18,11 +18,29 @@
     "node": true
   },
   "rules": {
-    "valid-jsdoc": 2,
+    "space-in-parens": ["error", "never"],
+    "comma-dangle": [2, "always-multiline"],
+    "newline-per-chained-call": 0,
+    "no-confusing-arrow": 0,
+    "no-console": 1,
+    "no-unused-vars": 2,
+    "no-use-before-define": 0,
+    "valid-jsdoc": 1,
     "react/jsx-uses-react": 1,
     "react/jsx-no-undef": 2,
     "react/jsx-wrap-multilines": 2,
-    "react/display-name": 0
+    "react/display-name": 0,
+    "react/destructuring-assignment": 0,
+    "react/jsx-closing-tag-location": 0,
+    "require-jsdoc": ["error", {
+      "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": false,
+          "ClassDeclaration": true,
+          "ArrowFunctionExpression": true,
+          "FunctionExpression": false
+      }
+  }]
   },
   "plugins": [
     "import",

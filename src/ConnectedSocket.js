@@ -2,12 +2,16 @@ import React from "react"
 import { connect } from "react-redux"
 import Context from './Context'
 import { handleSocketAction } from "./action";
+import PropTypes from 'prop-types'
 
+/**
+ * Connected socket provider for app
+ */
 class ConnectedSocket extends React.Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			payload: null
+			payload: null,
 		}
 	}
 	componentDidMount(){
@@ -15,7 +19,7 @@ class ConnectedSocket extends React.Component {
 		socket.onevent = (msg) => {
 			const [type, ...data] = msg.data
 			const payload ={
-				type, data
+				type, data,
 			}
 			this.setState({payload})
 			dispatch(handleSocketAction(payload))
@@ -31,4 +35,10 @@ class ConnectedSocket extends React.Component {
 		)
 	}
 }
-export default connect()( ConnectedSocket)
+
+ConnectedSocket.propTypes = {
+  children: PropTypes.node.isRequired,
+  socket: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+}
+export default connect()(ConnectedSocket)
