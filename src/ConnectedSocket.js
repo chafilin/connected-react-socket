@@ -29,7 +29,7 @@ class ConnectedSocket extends React.Component {
 		const {children,socket} = this.props
 		const {payload} = this.state
 		return (
-			<Context.Provider value={{payload,emit: (type, ...rest) => socket.emit(type, ...rest)}} >
+			<Context.Provider value={{payload, emit: (type, ...rest) => socket.emit(type, ...rest)}} >
 				{children}
 			</Context.Provider>
 		)

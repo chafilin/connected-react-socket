@@ -4,7 +4,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider as ReduxProvider,connect } from 'react-redux'
 
-import { ConnectedSocket,withSocket } from '../../src'
+import { ConnectedSocket, withSocket, emitMessage } from '../../src'
 import store  from './store'
 
 import {socket} from'./socket'
@@ -20,7 +20,7 @@ const Display = (props) =>{
     {socketEvent && socketEvent.type==='id' && (
       <div>Your id is <b>{socketEvent && socketEvent.data[0]}</b> </div>
     )}
-    <button onClick={()=>emit('reset',...socketEvent.data)}>Reset</button>
+    <button onClick={()=>emit('reset')}>Reset</button>
   </div>)
 }
 
@@ -31,7 +31,7 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch =>{
   return {
-    emit: ()=>console.log('WIP')
+    emit: (type, ...message) => dispatch(emitMessage(type, message))
   }
 }
 
