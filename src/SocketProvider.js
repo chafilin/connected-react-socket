@@ -3,9 +3,9 @@ import Context from "./Context";
 import PropTypes from "prop-types";
 
 /**
- * Connected socket provider for app
+ * Socket provider for app
  */
-class ConnectedSocket extends React.Component {
+class SocketProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,8 +36,8 @@ class ConnectedSocket extends React.Component {
   }
 }
 
-ConnectedSocket.propTypes = {
+SocketProvider.propTypes = {
   children: PropTypes.node.isRequired,
   socket: PropTypes.object.isRequired,
 };
-export default ConnectedSocket;
+export default SocketProvider;
