@@ -1,10 +1,15 @@
 /* eslint-disable */
-import io from 'socket.io-client'
+import io from "socket.io-client";
 
-const socket = io('http://localhost:8081')
+const socket1 = io("http://localhost:8081");
+const socket2 = io("http://localhost:8081");
 
-socket.on('connect',()=>{
-	console.log('Connect')
-})
+socket1.on("connect", () => {
+  console.log("Connect");
+});
 
-export {socket}
+socket2.on("connect", () => {
+  console.log("Connect");
+});
+
+export { socket1, socket2 };

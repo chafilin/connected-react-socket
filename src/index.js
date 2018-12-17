@@ -1,8 +1,6 @@
-import ConnectedSocket from './ConnectedSocket'
-import withSocket from './withSocket'
-import socketReducer from './reducer'
-import socketMiddleware from './middleware'
-import {emitMessage} from './actions'
+import SocketProvider from "./SocketProvider";
+import ConnectedSocket from "./ConnectedSocket";
+import withSocket from "./withSocket";
+import socketReducer from "./reducer";
 
-
-export {ConnectedSocket, withSocket, socketReducer, socketMiddleware, emitMessage}
+export { SocketProvider, ConnectedSocket, withSocket, socketReducer };
