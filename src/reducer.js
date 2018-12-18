@@ -1,4 +1,4 @@
-import { SOCKET_ACTION } from "./actions";
+import { SOCKET_ACTION } from "./actions"
 
 /**
  * Socket reducer which keeps data from socket

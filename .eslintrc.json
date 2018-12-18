@@ -32,6 +32,7 @@
     "react/display-name": 0,
     "react/destructuring-assignment": 0,
     "react/jsx-closing-tag-location": 0,
+    "semi": ["error", "never"],
     "require-jsdoc": ["error", {
       "require": {
           "FunctionDeclaration": true,

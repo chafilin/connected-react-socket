@@ -1,5 +1,5 @@
-export const SOCKET_ACTION = "@@socket/SOCKET_ACTION";
-export const EMIT_MESSAGE = "@@socket/EMIT_MESSAGE";
+export const SOCKET_ACTION = "@@socket/SOCKET_ACTION"
+export const EMIT_MESSAGE = "@@socket/EMIT_MESSAGE"
 
 /**
  * Action creator for saving socket data in store
@@ -9,7 +9,7 @@ export const EMIT_MESSAGE = "@@socket/EMIT_MESSAGE";
 export const handleSocketAction = payload => ({
   type: SOCKET_ACTION,
   payload,
-});
+})
 
 /**
  * Action creator for sending to store message to emit
@@ -23,4 +23,4 @@ export const emitMessage = (eventType, ...message) => ({
     eventType,
     message,
   },
-});
+})
