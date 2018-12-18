@@ -4,7 +4,12 @@ import React from "react";
 import { render } from "react-dom";
 import { Provider as ReduxProvider, connect } from "react-redux";
 
-import { ConnectedSocket, withSocket, SocketProvider } from "../../src";
+import {
+  ConnectedSocket,
+  withSocket,
+  SocketProvider,
+  emitMessage,
+} from "../../src";
 import store from "./store";
 
 import { socket1, socket2 } from "./socket";
@@ -34,7 +39,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    emit: () => {},
+    emit: (type, ...message) => dispatch(emitMessage(type, message)),
   };
 };
 
