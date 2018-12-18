@@ -23,6 +23,10 @@ class SocketProvider extends React.Component {
       this.setState({ payload })
     }
   }
+  componentWillUnmount(){
+    const { socket } = this.props
+    socket.close()
+  }
   render() {
     const { children, socket } = this.props
     const { payload } = this.state

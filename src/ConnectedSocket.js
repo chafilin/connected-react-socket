@@ -18,6 +18,11 @@ class ConnectedSocket extends React.Component {
       dispatch(handleSocketAction(payload))
     }
   }
+
+  componentWillUnmount(){
+    const { socket } = this.props
+    socket.close()
+  }
   render() {
     const { children } = this.props
     return <React.Fragment>{children}</React.Fragment>
