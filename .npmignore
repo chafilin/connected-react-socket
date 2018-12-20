@@ -1,0 +1,11 @@
+yarn.lock
+.github
+coverage/
+demo/
+node_modules/
+src/
+tests/
+.babelrc
+.editorconfig
+.eslintrc.json
+webpack.config.js
