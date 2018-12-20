@@ -15,7 +15,8 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "rules": {
     "space-in-parens": ["error", "never"],

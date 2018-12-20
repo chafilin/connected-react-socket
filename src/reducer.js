@@ -7,7 +7,7 @@ import { SOCKET_ACTION } from "./actions"
  * @returns {Object} new state
  */
 const socketReducer = (state={}, {type, payload})=>{
-  if (type ===  SOCKET_ACTION){
+  if (type === SOCKET_ACTION){
     return Object.assign({}, state, payload)
   }
   return state
