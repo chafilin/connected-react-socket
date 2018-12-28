@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/chafilin/connected-react-socket.svg?branch=master)](https://travis-ci.org/chafilin/connected-react-socket)
+[![npm version](https://badge.fury.io/js/connected-react-socket.svg)](https://badge.fury.io/js/connected-react-socket)
+
 # connected-react-socket
 
 WIP: Lightweight Provider for socket.io connection for react-redux application
