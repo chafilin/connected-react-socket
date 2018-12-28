@@ -10,3 +10,4 @@ tests/
 .eslintrc.json
 webpack.config.js
 .vscode
+.travis.yml
