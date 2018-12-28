@@ -4,6 +4,12 @@ WIP: Lightweight Provider for socket.io connection for react-redux application
 
 ## Usage
 
+install it by
+
+```
+npm i --save connected-react-socket
+```
+
 ### ConnectedSocket
 
 1. Add socket middleware with passing socket client
