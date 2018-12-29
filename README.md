@@ -3,7 +3,7 @@
 
 # connected-react-socket
 
-WIP: Lightweight Provider for socket.io connection for react-redux application
+Lightweight Provider for socket.io connection for react-redux application
 
 ## Usage
 
