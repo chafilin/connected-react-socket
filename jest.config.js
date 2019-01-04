@@ -8,4 +8,5 @@ module.exports = {
       lines: 85,
     },
   },
+  verbose: true,
 }

@@ -1,17 +1,19 @@
-import socketReducer from '../src/reducer'
-import { SOCKET_ACTION } from '../src/actions'
+import socketReducer from "../src/reducer"
+import { SOCKET_ACTION } from "../src/actions"
 
-test("socket reducer test init state", ()=>{
-  expect(socketReducer(undefined, {type: "SomeType"})).toEqual({})
-})
+describe("Reducer", () => {
+  it("socket reducer test init state", () => {
+    expect(socketReducer(undefined, { type: "SomeType" })).toEqual({})
+  })
 
-test("socket reducer test apply action",()=>{
-  const payload = {
-    eventType: 'auth',
-  }
-  const action = {
-    type: SOCKET_ACTION,
-    payload: payload,
-  }
-  expect(socketReducer({}, action)).toEqual(payload)
+  it("socket reducer test apply action", () => {
+    const payload = {
+      eventType: "auth",
+    }
+    const action = {
+      type: SOCKET_ACTION,
+      payload: payload,
+    }
+    expect(socketReducer({}, action)).toEqual(payload)
+  })
 })
