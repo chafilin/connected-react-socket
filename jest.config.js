@@ -1,5 +1,5 @@
 module.exports = {
-  collectCoverageFrom: ["src/*.{js,jsx}"],
+  collectCoverageFrom: ["src/*.{js,jsx}", "!src/index.js", "!src/Context.js"],
   coverageThreshold: {
     global: {
       statements: 85,
