@@ -1,54 +1,54 @@
 /***  examples/src/index.js ***/
 /* eslint-disable */
-import React from "react";
-import { render } from "react-dom";
-import { Provider as ReduxProvider, connect } from "react-redux";
+import React from "react"
+import { render } from "react-dom"
+import { Provider as ReduxProvider, connect } from "react-redux"
 
 import {
   ConnectedSocket,
   withSocket,
   SocketProvider,
   emitMessage,
-} from "../../src";
-import store from "./store";
+} from "../../src"
+import store from "./store"
 
-import { socket1, socket2 } from "./socket";
+import { socket1, socket2 } from "./socket"
 
 const Display = props => {
-  const { socketEvent, name, emit } = props;
+  const { socketEvent, name, emit } = props
   return (
     <div>
       <h2>Event from {name}:</h2>
       {socketEvent && socketEvent.type === "time" && (
-        <div>Server timer is {socketEvent && socketEvent.data[0]} </div>
+        <div>Server timer is {socketEvent && socketEvent.data.join(",")} </div>
       )}
       {socketEvent && socketEvent.type === "id" && (
         <div>
-          Your id is <b>{socketEvent && socketEvent.data[0]}</b>{" "}
+          Your id is <b>{socketEvent && socketEvent.data[0]}</b>
         </div>
       )}
       <button onClick={() => emit("reset")}>Reset</button>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
   return {
     socketEvent: state.socket,
-  };
-};
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
     emit: (type, ...message) => dispatch(emitMessage(type, message)),
-  };
-};
+  }
+}
 
 const ConnectedDisplay = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Display);
+)(Display)
 
-const DisplayEvent = withSocket(Display);
+const DisplayEvent = withSocket(Display)
 
 const App = () => (
   <div>
@@ -63,5 +63,5 @@ const App = () => (
       </ConnectedSocket>
     </ReduxProvider>
   </div>
-);
-render(<App />, document.getElementById("root"));
+)
+render(<App />, document.getElementById("root"))
