@@ -15,7 +15,7 @@ npm i --save connected-react-socket
 
 ### ConnectedSocket
 
-1. Add socket middleware with passing socket client
+Add socket middleware with passing socket client
 
 ```js
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
@@ -36,13 +36,18 @@ const store = createStore(
 export default store;
 ```
 
-2. Wrap componet by `withSocket` HOC and use `socketEvent` prop
+Then wrap componet by `withSocket` HOC and use `socketEvent` prop
 
 ```js
 const Display = props => {
   const { socketEvent } = props;
   return (
-    <div>{socketEvent.type}</div> //Will print socket event name
+    <div>
+      <!-- Will print socket event name-->
+      <div>{socketEvent.type}</div>
+      <!-- Let's print recieved messages -->
+      <div>{socketEvent && socketEvent.data.join(",")}</div>
+    </div>
   );
 };
 const mapStateToProps = state => {
@@ -61,7 +66,7 @@ const ConnectedDisplay = connect(
 )(Display);
 ```
 
-3. Add socket provider under the redux provider
+Last one: dd socket provider under the redux provider
 
 ```xml
 ...
@@ -73,23 +78,28 @@ const ConnectedDisplay = connect(
 
 ### SocketProvider
 
-1. Create component and wrap it with HOC
+Create component and wrap it with HOC
 
 ```js
 const Display = props => {
   const { socketEvent } = props;
   return (
-    <div>{socketEvent.type}</div> //Will print socket event name
+    <div>
+      <!-- Will print socket event name-->
+      <div>{socketEvent.type}</div>
+      <!-- Let's print recieved messages -->
+      <div>{socketEvent && socketEvent.data.join(",")}</div>
+    </div>
   );
 };
 
 const DisplayEvent = withSocket(Display);
 ```
 
-2. Add socket provider
+And add socket provider
 
 ```xml
 <SocketProvider socket={socket}>
-      <DisplayEvent name="WithSocket" />
+  <DisplayEvent name="WithSocket" />
 </SocketProvider>
 ```
