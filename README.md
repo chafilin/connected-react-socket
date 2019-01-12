@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/chafilin/connected-react-socket.svg?branch=master)](https://travis-ci.org/chafilin/connected-react-socket)
 [![npm version](https://badge.fury.io/js/connected-react-socket.svg)](https://badge.fury.io/js/connected-react-socket)
+[![Coverage Status](https://coveralls.io/repos/github/chafilin/connected-react-socket/badge.svg)](https://coveralls.io/github/chafilin/connected-react-socket)
 
 # connected-react-socket
 
