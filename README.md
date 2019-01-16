@@ -39,14 +39,14 @@ export default store;
 
 Then wrap componet by `withSocket` HOC and use `socketEvent` prop
 
-```js
+```jsx
 const Display = props => {
   const { socketEvent } = props;
   return (
     <div>
-      <!-- Will print socket event name-->
+      // Will print socket event name
       <div>{socketEvent.type}</div>
-      <!-- Let's print recieved messages -->
+      // Let's print recieved messages
       <div>{socketEvent && socketEvent.data.join(",")}</div>
     </div>
   );
@@ -81,14 +81,14 @@ Last one: dd socket provider under the redux provider
 
 Create component and wrap it with HOC
 
-```js
+```jsx
 const Display = props => {
   const { socketEvent } = props;
   return (
     <div>
-      <!-- Will print socket event name-->
+      // Will print socket event name
       <div>{socketEvent.type}</div>
-      <!-- Let's print recieved messages -->
+      // Let's print recieved messages
       <div>{socketEvent && socketEvent.data.join(",")}</div>
     </div>
   );
