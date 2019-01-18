@@ -6,10 +6,10 @@ node_js:
 script:
   - yarn test
 
+after_success: 'npm run coveralls'
+
 cache:
   directories:
     - node_modules
 
-branches:
-  only:
-    - master
+
