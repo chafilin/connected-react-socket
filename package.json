@@ -1,6 +1,6 @@
 {
   "name": "connected-react-socket",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "React HOC for adding socket.io in react-redux application.",
   "main": "dist/index.js",
   "repository": "git@github.com:chafilin/connected-react-socket.git",
