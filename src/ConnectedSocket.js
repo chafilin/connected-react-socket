@@ -6,7 +6,7 @@ import PropTypes from "prop-types"
 /**
  * Connected socket provider for app
  */
-class ConnectedSocket extends React.Component {
+export class ConnectedSocket extends React.Component {
   componentDidMount() {
     const { socket, dispatch } = this.props
     socket.onevent = msg => {
@@ -19,7 +19,7 @@ class ConnectedSocket extends React.Component {
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     const { socket } = this.props
     socket.close()
   }
