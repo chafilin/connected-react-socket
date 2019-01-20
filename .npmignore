@@ -11,3 +11,4 @@ tests/
 webpack.config.js
 .vscode
 .travis.yml
+jest.config.js
