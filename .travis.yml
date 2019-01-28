@@ -10,7 +10,6 @@ jobs:
       - yarn test
       - yarn coveralls
     - stage: npm release
-      script: npm publish
       deploy:
         provider: npm
         api_key: $NPM_API_KEY
