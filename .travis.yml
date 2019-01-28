@@ -3,16 +3,17 @@ language: node_js
 node_js:
   - "node"
 
-script:
-  - yarn test
-
 jobs:
   include:
+    - stage: test
+      script:
+      - yarn test
+      - yarn coveralls
     - stage: npm release
-      script: yarn coveralls
       script: npm publish
       deploy:
         provider: npm
         api_key: $NPM_API_KEY
-        on: master
+        on:
+          branch: master
 
