@@ -12,6 +12,7 @@ jobs:
     - stage: npm release
       deploy:
         provider: npm
+        email: "chafiliny@gmail.com"
         api_key: $NPM_API_KEY
         on:
           branch: master
