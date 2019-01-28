@@ -6,13 +6,9 @@ node_js:
 script: yarn test
 
 deploy:
-  skip_cleanup: true
   provider: script
-  script: yarn coveralls
-  on:
-    branch: master
-  provider: script
-  script: yarn transpile
+  script:
+    - yarn transpile
   skip_cleanup: true
   provider: npm
   email: "chafiliny@gmail.com"
@@ -20,6 +16,12 @@ deploy:
   tag: next
   on:
     branch: next
+  skip_cleanup: true
+  provider: script
+  script:
+    - yarn coveralls
+  on:
+    branch: master
   skip_cleanup: true
   provider: npm
   email: "chafiliny@gmail.com"
