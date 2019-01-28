@@ -42,9 +42,12 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^3.1.14",
     "coveralls": "^3.0.2"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-redux": "^6.0.0"
   }
 }

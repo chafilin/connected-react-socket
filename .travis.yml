@@ -3,17 +3,31 @@ language: node_js
 node_js:
   - "node"
 
-jobs:
-  include:
-    - stage: test
-      script:
-      - yarn test
-      - yarn coveralls
-    - stage: npm release
-      deploy:
-        provider: npm
-        email: "chafiliny@gmail.com"
-        api_key: $NPM_API_KEY
-        on:
-          branch: master
+script: yarn test
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: yarn coveralls
+  on:
+    branch: master
+  provider: script
+  script: yarn transpile
+  on:
+    branches:
+      only:
+      - master
+      - next
+  skip_cleanup: true
+  provider: npm
+  email: "chafiliny@gmail.com"
+  api_key: $NPM_API_KEY
+  tag: next
+  on:
+    branch: next
+  provider: npm
+  email: "chafiliny@gmail.com"
+  api_key: $NPM_API_KEY
+  on:
+    branch: master
 
