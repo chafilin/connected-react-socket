@@ -3,29 +3,32 @@ language: node_js
 node_js:
   - "node"
 
-script: yarn test
+stages:
+  - test
+  - build
+  - name: next
+    if: branch = next
+  - name: coveralls
+    if: branch = master
+  - name: publish
+    if: branch = master
 
-deploy:
-  provider: script
-  script:
-    - yarn transpile
-  skip_cleanup: true
-  provider: npm
-  email: "chafiliny@gmail.com"
-  api_key: $NPM_API_KEY
-  tag: next
-  on:
-    branch: next
-  skip_cleanup: true
-  provider: script
-  script:
-    - yarn coveralls
-  on:
-    branch: master
-  skip_cleanup: true
-  provider: npm
-  email: "chafiliny@gmail.com"
-  api_key: $NPM_API_KEY
-  on:
-    branch: master
-
+jobs:
+  include:
+    - stage: test
+      script: yarn test
+    - stage: build
+      script: yarn transpile
+    - stage: next
+      deploy:
+        provider: npm
+        email: "chafiliny@gmail.com"
+        api_key: $NPM_API_KEY
+        tag: next
+    - stage: coveralls
+      script: yarn coveralls
+    - stage: publish
+      deploy:
+        provider: npm
+        email: "chafiliny@gmail.com"
+        api_key: $NPM_API_KEY
