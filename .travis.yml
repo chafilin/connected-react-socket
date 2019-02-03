@@ -5,7 +5,8 @@ node_js:
 
 stages:
   - test
-  - build
+  - name: build
+    if: branch = master
   - name: coveralls
     if: branch = master
   - name: publish
