@@ -10,7 +10,7 @@
     "demoserver": "node ./demo/server",
     "demo": "webpack-dev-server --mode development",
     "start": "yarn demoserver | yarn demo",
-    "transpile": "babel src -d dist --copy-files",
+    "build": "babel src -d dist --copy-files",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },

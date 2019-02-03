@@ -6,8 +6,6 @@ node_js:
 stages:
   - test
   - build
-  - name: next
-    if: branch = next
   - name: coveralls
     if: branch = master
   - name: publish
@@ -18,13 +16,7 @@ jobs:
     - stage: test
       script: yarn test
     - stage: build
-      script: yarn transpile
-    - stage: next
-      deploy:
-        provider: npm
-        email: "chafiliny@gmail.com"
-        api_key: $NPM_API_KEY
-        tag: next
+      script: yarn build
     - stage: coveralls
       script: yarn coveralls
     - stage: publish
