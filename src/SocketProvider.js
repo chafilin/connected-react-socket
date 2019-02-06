@@ -13,7 +13,10 @@ class SocketProvider extends React.Component {
     }
   }
   componentDidMount() {
-    const { socket } = this.props
+    const { socket, shouldReconnect } = this.props
+    if (shouldReconnect) {
+      socket.open()
+    }
     socket.onevent = msg => {
       const [type, ...data] = msg.data
       const payload = {
@@ -23,8 +26,11 @@ class SocketProvider extends React.Component {
       this.setState({ payload })
     }
   }
-  componentWillUnmount(){
-    const { socket } = this.props
+  componentWillUnmount() {
+    const { socket, shouldDisconnect } = this.props
+    if (shouldDisconnect) {
+      socket.close()
+    }
     socket.close()
   }
   render() {
@@ -43,5 +49,13 @@ class SocketProvider extends React.Component {
 SocketProvider.propTypes = {
   children: PropTypes.node.isRequired,
   socket: PropTypes.object.isRequired,
+  shouldReconnect: PropTypes.bool,
+  shouldDisconnect: PropTypes.bool,
 }
+
+SocketProvider.defaultProps = {
+  shouldReconnect: false,
+  shouldDisconnect: false,
+}
+
 export default SocketProvider
