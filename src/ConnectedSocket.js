@@ -8,7 +8,10 @@ import PropTypes from "prop-types"
  */
 export class ConnectedSocket extends React.Component {
   componentDidMount() {
-    const { socket, dispatch } = this.props
+    const { socket, dispatch, shouldReconnect } = this.props
+    if (shouldReconnect) {
+      socket.open()
+    }
     socket.onevent = msg => {
       const [type, ...data] = msg.data
       const payload = {
@@ -20,8 +23,10 @@ export class ConnectedSocket extends React.Component {
   }
 
   componentWillUnmount() {
-    const { socket } = this.props
-    socket.close()
+    const { socket, shouldDisconnect } = this.props
+    if (shouldDisconnect) {
+      socket.close()
+    }
   }
   render() {
     const { children } = this.props
@@ -33,5 +38,13 @@ ConnectedSocket.propTypes = {
   children: PropTypes.node.isRequired,
   socket: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
+  shouldReconnect: PropTypes.bool,
+  shouldDisconnect: PropTypes.bool,
 }
+
+ConnectedSocket.defaultProps = {
+  shouldReconnect: false,
+  shouldDisconnect: false,
+}
+
 export default connect()(ConnectedSocket)
