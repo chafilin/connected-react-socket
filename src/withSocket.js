@@ -1,5 +1,5 @@
 import React from "react"
-import Context from "./Context"
+import { MessageContext } from "./Context"
 
 /**
  * Pass socket data and methods to component
@@ -13,7 +13,7 @@ function withSocket(WrappedComponent) {
   return class WithSocket extends React.Component {
     render() {
       return (
-        <Context.Consumer>
+        <MessageContext.Consumer>
           {({ payload, emit }) => (
             <WrappedComponent
               socketEvent={payload}
@@ -21,7 +21,7 @@ function withSocket(WrappedComponent) {
               {...this.props}
             />
           )}
-        </Context.Consumer>
+        </MessageContext.Consumer>
       )
     }
   }

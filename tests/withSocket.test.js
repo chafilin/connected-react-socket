@@ -7,8 +7,9 @@ Enzyme.configure({ adapter: new Adapter() })
 const { mount } = Enzyme
 
 const mockContext = jest.fn()
+
 jest.mock("../src/Context", () => ({
-  Consumer: ({ children }) => children(mockContext()),
+  MessageContext: { Consumer: ({ children }) => children(mockContext()) },
 }))
 
 /* eslint-disable  */

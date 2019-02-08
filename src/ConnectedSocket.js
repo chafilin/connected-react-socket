@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { handleSocketAction } from "./actions"
 import PropTypes from "prop-types"
+import { SocketContext } from "./Context"
 
 /**
  * Connected socket provider for app
@@ -29,8 +30,10 @@ export class ConnectedSocket extends React.Component {
     }
   }
   render() {
-    const { children } = this.props
-    return <React.Fragment>{children}</React.Fragment>
+    const { children, socket } = this.props
+    return (
+      <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
+    )
   }
 }
 

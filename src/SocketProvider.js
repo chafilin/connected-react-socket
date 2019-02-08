@@ -1,5 +1,5 @@
 import React from "react"
-import Context from "./Context"
+import { MessageContext, SocketContext } from "./Context"
 import PropTypes from "prop-types"
 
 /**
@@ -37,11 +37,13 @@ class SocketProvider extends React.Component {
     const { children, socket } = this.props
     const { payload } = this.state
     return (
-      <Context.Provider
+      <MessageContext.Provider
         value={{ payload, emit: (type, ...rest) => socket.emit(type, ...rest) }}
       >
-        {children}
-      </Context.Provider>
+        <SocketContext.Provider value={socket}>
+          {children}
+        </SocketContext.Provider>
+      </MessageContext.Provider>
     )
   }
 }

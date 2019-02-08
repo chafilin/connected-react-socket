@@ -9,13 +9,15 @@ import {
   withSocket,
   SocketProvider,
   emitMessage,
+  injectSocket,
 } from "../../src"
 import store from "./store"
 
 import { socket1, socket2 } from "./socket"
 
 const Display = props => {
-  const { socketEvent, name, emit } = props
+  const { socketEvent, name, emit, socket } = props
+  console.log(socket)
   return (
     <div>
       <h2>Event from {name}:</h2>
@@ -43,12 +45,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedDisplay = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Display)
+const ConnectedDisplay = injectSocket(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Display)
+)
 
-const DisplayEvent = withSocket(Display)
+const DisplayEvent = injectSocket(withSocket(Display))
 
 const App = () => (
   <div>
