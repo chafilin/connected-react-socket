@@ -6,6 +6,11 @@
   "repository": "git@github.com:chafilin/connected-react-socket.git",
   "author": "Chafilin <chafiliny@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "socket.io",
+    "redux"
+  ],
   "scripts": {
     "demoserver": "node ./demo/server",
     "demo": "webpack-dev-server --mode development",
