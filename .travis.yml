@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - node
 
-before_deploy: 'yarn coveralls'
+before_deploy: 'yarn build'
 
 deploy:
   provider: npm
@@ -11,3 +11,5 @@ deploy:
   on:
     tags: true
     repo: chafilin/connected-react-socket
+
+after_deploy: 'yarn coveralls'
