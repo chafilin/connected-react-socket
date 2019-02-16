@@ -5,6 +5,7 @@ node_js:
 before_deploy: 'yarn build'
 
 deploy:
+  skip_cleanup: true
   provider: npm
   email: chafiliny@gmail.com
   api_key: $NPM_API_KEY
