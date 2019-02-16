@@ -26,6 +26,7 @@
     "no-console": 1,
     "no-unused-vars": 2,
     "no-use-before-define": 0,
+    "import/no-named-as-default": 0,
     "valid-jsdoc": 1,
     "react/jsx-uses-react": 1,
     "react/jsx-no-undef": 2,
@@ -34,18 +35,18 @@
     "react/destructuring-assignment": 0,
     "react/jsx-closing-tag-location": 0,
     "semi": ["error", "never"],
-    "require-jsdoc": ["error", {
-      "require": {
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
           "FunctionDeclaration": true,
           "MethodDefinition": false,
           "ClassDeclaration": true,
           "ArrowFunctionExpression": true,
           "FunctionExpression": false
+        }
       }
-  }]
+    ]
   },
-  "plugins": [
-    "import",
-    "react"
-  ]
+  "plugins": ["import", "react"]
 }

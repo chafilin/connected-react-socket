@@ -1,15 +1,16 @@
 language: node_js
-
 node_js:
-  - "node"
+- node
 
-script:
-  - yarn test
+before_deploy: 'yarn build'
 
-after_success: 'yarn coveralls'
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: chafiliny@gmail.com
+  api_key: $NPM_API_KEY
+  on:
+    tags: true
+    repo: chafilin/connected-react-socket
 
-cache:
-  directories:
-    - node_modules
-
-
+after_deploy: 'yarn coveralls'

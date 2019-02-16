@@ -1,5 +1,6 @@
-import React from 'react'
+import React from "react"
 
-const Context = React.createContext(null)
+const MessageContext = React.createContext(null)
+const SocketContext = React.createContext(null)
 
-export default Context
+export { MessageContext, SocketContext }

@@ -1,16 +1,21 @@
 {
   "name": "connected-react-socket",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "React HOC for adding socket.io in react-redux application.",
   "main": "dist/index.js",
   "repository": "git@github.com:chafilin/connected-react-socket.git",
   "author": "Chafilin <chafiliny@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "socket.io",
+    "redux"
+  ],
   "scripts": {
     "demoserver": "node ./demo/server",
     "demo": "webpack-dev-server --mode development",
     "start": "yarn demoserver | yarn demo",
-    "transpile": "babel src -d dist --copy-files",
+    "build": "babel src -d dist --copy-files",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
@@ -42,9 +47,12 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^3.1.14",
     "coveralls": "^3.0.2"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-redux": "^6.0.0"
   }
 }

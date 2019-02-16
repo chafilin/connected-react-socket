@@ -1,5 +1,5 @@
 import React from "react"
-import Context from "./Context"
+import { MessageContext, SocketContext } from "./Context"
 import PropTypes from "prop-types"
 
 /**
@@ -13,7 +13,10 @@ class SocketProvider extends React.Component {
     }
   }
   componentDidMount() {
-    const { socket } = this.props
+    const { socket, shouldReconnect } = this.props
+    if (shouldReconnect) {
+      socket.open()
+    }
     socket.onevent = msg => {
       const [type, ...data] = msg.data
       const payload = {
@@ -23,19 +26,24 @@ class SocketProvider extends React.Component {
       this.setState({ payload })
     }
   }
-  componentWillUnmount(){
-    const { socket } = this.props
+  componentWillUnmount() {
+    const { socket, shouldDisconnect } = this.props
+    if (shouldDisconnect) {
+      socket.close()
+    }
     socket.close()
   }
   render() {
     const { children, socket } = this.props
     const { payload } = this.state
     return (
-      <Context.Provider
+      <MessageContext.Provider
         value={{ payload, emit: (type, ...rest) => socket.emit(type, ...rest) }}
       >
-        {children}
-      </Context.Provider>
+        <SocketContext.Provider value={socket}>
+          {children}
+        </SocketContext.Provider>
+      </MessageContext.Provider>
     )
   }
 }
@@ -43,5 +51,13 @@ class SocketProvider extends React.Component {
 SocketProvider.propTypes = {
   children: PropTypes.node.isRequired,
   socket: PropTypes.object.isRequired,
+  shouldReconnect: PropTypes.bool,
+  shouldDisconnect: PropTypes.bool,
 }
+
+SocketProvider.defaultProps = {
+  shouldReconnect: false,
+  shouldDisconnect: false,
+}
+
 export default SocketProvider
