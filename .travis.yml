@@ -1,27 +1,13 @@
 language: node_js
-
 node_js:
-  - "node"
+- node
 
-stages:
-  - test
-  - name: build
-    if: branch = master
-  - name: coveralls
-    if: branch = master
-  - name: publish
-    if: branch = master
+before_deploy: 'yarn coveralls'
 
-jobs:
-  include:
-    - stage: test
-      script: yarn test
-    - stage: build
-      script: yarn build
-    - stage: coveralls
-      script: yarn coveralls
-    - stage: publish
-      deploy:
-        provider: npm
-        email: "chafiliny@gmail.com"
-        api_key: $NPM_API_KEY
+deploy:
+  provider: npm
+  email: chafiliny@gmail.com
+  api_key: $NPM_API_KEY
+  on:
+    tags: true
+    repo: chafilin/connected-react-socket
