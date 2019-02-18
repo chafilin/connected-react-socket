@@ -6,6 +6,14 @@
 
 Lightweight Provider for socket.io connection for react-redux application
 
+## Contents
+
+- [Usage](#usage)
+- [Props](#props)
+- [Passed props](#passed-props)
+- [Redux connection](#redux-connection)
+- [Feedback](#feedback)
+
 ## Usage
 
 install it by
@@ -161,3 +169,7 @@ Action to pass message to socket if using `ConnectedProvider`.
 Middleware for linking socket with store.
 
 Apply `socketMiddleware(socket)` to store. Where `socket` is your socket.io instance
+
+# Feedback
+
+Fill free to create an issue or write me to chafiliny@gmail.com
