@@ -14,6 +14,12 @@ install it by
 npm i --save connected-react-socket
 ```
 
+or
+
+```
+yarn add  connected-react-socket
+```
+
 ### ConnectedSocket
 
 Add socket middleware with passing socket client
@@ -104,3 +110,54 @@ And add socket provider
   <DisplayEvent name="WithSocket" />
 </SocketProvider>
 ```
+
+## Props
+
+### SocketProvider
+
+| Prop             |                  Decription                   | Default |
+| ---------------- | :-------------------------------------------: | ------- |
+| socket           |              socket.io instance               | null    |
+| shouldReconnect  | Tells provider to reconect to socket on mount | false   |
+| shouldDisconnect | Tells provider to close connection on unmount | false   |
+
+### ConnectedSocket
+
+| Prop             |                  Decription                   | Default |
+| ---------------- | :-------------------------------------------: | ------- |
+| socket           |              socket.io instance               | null    |
+| shouldReconnect  | Tells provider to reconect to socket on mount | false   |
+| shouldDisconnect | Tells provider to close connection on unmount | false   |
+
+## Passed props
+
+### withSocket
+
+| Passed prop |            Decription            |
+| ----------- | :------------------------------: |
+| socketEvent |         socket.io event          |
+| emit        | function for emit socket message |
+
+### injectSocket
+
+| Passed prop |            Decription            |
+| ----------- | :------------------------------: |
+| socket      | socket.io instance from provider |
+
+## Redux connection
+
+### socketReducer
+
+Typical reducer with state and action. Let `ConnectedProvider` work with store.
+
+### emitMessage
+
+Action to pass message to socket if using `ConnectedProvider`.
+
+`emitMessage(type, message)` where `type: string` and `message:array`
+
+### socketMiddleware
+
+Middleware for linking socket with store.
+
+Apply `socketMiddleware(socket)` to store. Where `socket` is your socket.io instance
