@@ -3,7 +3,7 @@
 
 # Build folders
 dist
-
+build
 # Test folders
 coverage
 
