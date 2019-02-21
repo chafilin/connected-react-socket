@@ -16,6 +16,8 @@ class ChatPage extends Component {
     };
     this.setMessage = this.setMessage.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
+    this.messagesList = React.createRef();
+    this.input = React.createRef();
   }
 
   setMessage(e) {
@@ -33,6 +35,24 @@ class ChatPage extends Component {
     }
   }
 
+  componentDidMount() {
+    this.input.focus();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    const scrollHeight = this.messageList.scrollHeight;
+    const height = this.messageList.clientHeight;
+    console.log("scrollHeight: ", scrollHeight);
+    console.log("height: ", height);
+    const maxScrollTop = scrollHeight - height;
+    console.log("maxScrollTop: ", maxScrollTop);
+    this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+  }
+
   render() {
     const { socketEvent, currentUser } = this.props;
     const { message, messages } = this.state;
@@ -45,7 +65,7 @@ class ChatPage extends Component {
     }
     return (
       <div className="page">
-        <div className="container">
+        <div className="container" ref={node => (this.messageList = node)}>
           <div className="messages">
             {messages.map(({ message, username }) => (
               <div
@@ -62,7 +82,12 @@ class ChatPage extends Component {
                       : "nes-balloon from-right"
                   }
                 >
-                  <p>{message[0]}</p>
+                  <div className="message-body">
+                    {username && username[0] !== currentUser && (
+                      <span className="username">{username[0]}:</span>
+                    )}
+                    {message[0]}
+                  </div>
                 </div>
               </div>
             ))}
@@ -74,6 +99,7 @@ class ChatPage extends Component {
             className="nes-input"
             value={message}
             onChange={this.setMessage}
+            ref={node => (this.input = node)}
             onKeyPress={e => {
               if (e.key === "Enter") this.sendMessage();
             }}
