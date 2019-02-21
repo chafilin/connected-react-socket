@@ -44,10 +44,7 @@ class ChatPage extends Component {
   scrollToBottom() {
     const scrollHeight = this.messageList.scrollHeight;
     const height = this.messageList.clientHeight;
-    console.log("scrollHeight: ", scrollHeight);
-    console.log("height: ", height);
     const maxScrollTop = scrollHeight - height;
-    console.log("maxScrollTop: ", maxScrollTop);
     this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
   }
 
