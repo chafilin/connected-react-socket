@@ -14,7 +14,7 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run build && npm run start:socket",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
