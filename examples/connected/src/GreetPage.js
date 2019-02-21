@@ -21,7 +21,7 @@ class GreetPage extends Component {
   render() {
     const { sendName, saveName, type, history } = this.props;
     const { name } = this.state;
-    if (type) {
+    if (type === "login") {
       history.push("/chat");
     }
     return (
@@ -40,8 +40,10 @@ class GreetPage extends Component {
               type="button"
               className="nes-btn is-success"
               onClick={() => {
-                sendName(name);
-                saveName(name);
+                if (name) {
+                  sendName(name);
+                  saveName(name);
+                }
               }}
             >
               Start

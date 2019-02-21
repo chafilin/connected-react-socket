@@ -13,6 +13,7 @@ class ChatPage extends Component {
       messages: []
     };
     this.setMessage = this.setMessage.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   setMessage(e) {
@@ -21,8 +22,17 @@ class ChatPage extends Component {
     setTyping();
   }
 
+  sendMessage() {
+    const { sendMessage } = this.props;
+    const { message } = this.state;
+    if (message) {
+      sendMessage(message);
+      this.setState({ message: "" });
+    }
+  }
+
   render() {
-    const { sendMessage, socketEvent, currentUser } = this.props;
+    const { socketEvent, currentUser } = this.props;
     const { message, messages } = this.state;
     if (socketEvent.type === "new message") {
       const lastMessage = socketEvent.data[0];
@@ -66,7 +76,7 @@ class ChatPage extends Component {
           <button
             type="button"
             className="nes-btn is-success"
-            onClick={() => sendMessage(message)}
+            onClick={this.sendMessage}
           >
             Send
           </button>
