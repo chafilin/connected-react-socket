@@ -72,6 +72,9 @@ class ChatPage extends Component {
             className="nes-input"
             value={message}
             onChange={this.setMessage}
+            onKeyPress={e => {
+              if (e.key === "Enter") this.sendMessage();
+            }}
           />
           <button
             type="button"
