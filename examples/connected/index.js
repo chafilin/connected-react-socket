@@ -21,7 +21,6 @@ const broadcast = (userList, action, data) => {
   });
 };
 
-var numUsers = 0;
 let users = [];
 io.on("connection", socket => {
   var addedUser = false;
@@ -42,44 +41,18 @@ io.on("connection", socket => {
     // we store the username in the socket session for this client
     socket.username = username;
     users.push(socket);
-    ++numUsers;
     addedUser = true;
-    socket.emit("login", {
-      numUsers: numUsers
-    });
+    socket.emit("login");
     // echo globally (all clients) that a person has connected
-    broadcast(users, "user joined", {
-      username: socket.username,
-      numUsers: numUsers
-    });
-  });
-
-  // when the client emits 'typing', we broadcast it to others
-  socket.on("typing", () => {
-    broadcast(users, "typing", {
-      username: socket.username
-    });
-  });
-
-  // when the client emits 'stop typing', we broadcast it to others
-  socket.on("stop typing", () => {
-    broadcast(users, "stop typing", {
-      username: socket.username
-    });
   });
 
   // when the user disconnects.. perform this
   socket.on("disconnect", () => {
     if (addedUser) {
-      --numUsers;
       users = users.filter(user => {
         return user.client.id !== socket.id;
       });
       // echo globally that this client has left
-      broadcast(users, "user left", {
-        username: socket.username,
-        numUsers: numUsers
-      });
     }
   });
 });

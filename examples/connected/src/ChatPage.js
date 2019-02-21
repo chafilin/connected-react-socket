@@ -22,8 +22,6 @@ class ChatPage extends Component {
 
   setMessage(e) {
     this.setState({ message: e.target.value });
-    const { setTyping } = this.props;
-    setTyping();
   }
 
   sendMessage() {
@@ -118,8 +116,7 @@ class ChatPage extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  sendMessage: message => dispatch(emitMessage("new message", message)),
-  setTyping: () => dispatch(emitMessage("typing"))
+  sendMessage: message => dispatch(emitMessage("new message", message))
 });
 
 const mapStateToProps = state => ({
