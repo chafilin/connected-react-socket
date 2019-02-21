@@ -12,14 +12,24 @@ class GreetPage extends Component {
       name: ""
     };
     this.setName = this.setName.bind(this);
+    this.handleStartClick = this.handleStartClick.bind(this);
   }
 
   setName(e) {
     this.setState({ name: e.target.value });
   }
 
+  handleStartClick() {
+    const { sendName, saveName } = this.props;
+    const { name } = this.state;
+    if (name) {
+      sendName(name);
+      saveName(name);
+    }
+  }
+
   render() {
-    const { sendName, saveName, type, history } = this.props;
+    const { type, history } = this.props;
     const { name } = this.state;
     if (type === "login") {
       history.push("/chat");
@@ -35,16 +45,14 @@ class GreetPage extends Component {
               className="nes-input"
               value={name}
               onChange={this.setName}
+              onKeyPress={e => {
+                if (e.key === "Enter") this.handleStartClick();
+              }}
             />
             <button
               type="button"
               className="nes-btn is-success"
-              onClick={() => {
-                if (name) {
-                  sendName(name);
-                  saveName(name);
-                }
-              }}
+              onClick={this.handleStartClick}
             >
               Start
             </button>
