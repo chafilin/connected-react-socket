@@ -31,37 +31,3 @@
     transform: rotate(360deg);
   }
 }
-
-.-left {
-  align-self: flex-start;
-}
-
-.-right {
-  align-self: flex-end;
-}
-
-.messages {
-  display: flex;
-  flex-direction: column;
-}
-
-.message {
-  display: flex;
-}
-
-.container {
-  padding: 1.5rem 2rem;
-}
-
-footer {
-  padding: 16px;
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.page {
-  height: 100vh;
-  background-color: gray;
-}

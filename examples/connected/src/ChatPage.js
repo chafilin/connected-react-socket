@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import "./App.css";
+import "./ChatPage.css";
+
 import "nes.css/css/nes.min.css";
 import { emitMessage } from "connected-react-socket";
 
