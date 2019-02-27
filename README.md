@@ -4,7 +4,7 @@
 
 # connected-react-socket
 
-Lightweight Provider for socket.io connection for react-redux application
+Lightweight Provider for socket.io connection for react-redux application. You can see the [demo](https://connected-react-socket-demo.herokuapp.com/).
 
 ## Contents
 
