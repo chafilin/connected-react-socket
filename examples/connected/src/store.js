@@ -6,10 +6,6 @@ import { socketReducer, socketMiddleware } from "connected-react-socket";
 import reducer from "./reducer";
 export const socket = io();
 
-socket.on("connect", () => {
-  console.log("Connect");
-});
-
 const reducers = combineReducers({
   socket: socketReducer,
   user: reducer

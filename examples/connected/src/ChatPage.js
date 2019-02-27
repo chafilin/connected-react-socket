@@ -58,6 +58,33 @@ class ChatPage extends Component {
           messages: [...messages, lastMessage]
         });
     }
+    console.log(messages);
+    if (socketEvent.type === "add user") {
+      const lastMessage = {
+        message: [
+          `${socketEvent.data[0].username} joined! Online: ${
+            socketEvent.data[0].amountOfUsers
+          }`
+        ]
+      };
+      if (!messages.find(item => item.message[0] === lastMessage.message[0]))
+        this.setState({
+          messages: [...messages, lastMessage]
+        });
+    }
+    if (socketEvent.type === "remove user") {
+      const lastMessage = {
+        message: [
+          `${socketEvent.data[0].username} left! Online: ${
+            socketEvent.data[0].amountOfUsers
+          }`
+        ]
+      };
+      if (!messages.find(item => item.message[0] === lastMessage.message[0]))
+        this.setState({
+          messages: [...messages, lastMessage]
+        });
+    }
     return (
       <div className="page">
         <div className="container" ref={node => (this.messageList = node)}>
@@ -65,16 +92,16 @@ class ChatPage extends Component {
             {messages.map(({ message, username }) => (
               <div
                 className={
-                  username && username[0] !== currentUser
-                    ? "message -left"
-                    : "message -right"
+                  username && username[0] === currentUser
+                    ? "message -right"
+                    : "message -left"
                 }
               >
                 <div
                   className={
-                    username && username[0] !== currentUser
-                      ? "nes-balloon from-left"
-                      : "nes-balloon from-right"
+                    username && username[0] === currentUser
+                      ? "nes-balloon from-right"
+                      : "nes-balloon from-left"
                   }
                 >
                   <div className="message-body">

@@ -24,7 +24,6 @@ const broadcast = (userList, action, data) => {
 let users = [];
 io.on("connection", socket => {
   var addedUser = false;
-
   // when the client emits 'new message', this listens and executes
   socket.on("new message", data => {
     // we tell the client to execute 'new message'
@@ -44,6 +43,7 @@ io.on("connection", socket => {
     addedUser = true;
     socket.emit("login");
     // echo globally (all clients) that a person has connected
+    broadcast(users, "add user", { username, amountOfUsers: users.length });
   });
 
   // when the user disconnects.. perform this
@@ -53,6 +53,10 @@ io.on("connection", socket => {
         return user.client.id !== socket.id;
       });
       // echo globally that this client has left
+      broadcast(users, "remove user", {
+        username: socket.username,
+        amountOfUsers: users.length
+      });
     }
   });
 });
