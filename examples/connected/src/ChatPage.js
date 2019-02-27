@@ -48,17 +48,18 @@ class ChatPage extends Component {
     this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
   }
 
-  render() {
-    const { socketEvent, currentUser } = this.props;
-    const { message, messages } = this.state;
+  shouldComponentUpdate(nextProps) {
+    const { socketEvent } = nextProps;
+    const { messages } = this.state;
     if (socketEvent.type === "new message") {
       const lastMessage = socketEvent.data[0];
-      if (messages.indexOf(lastMessage) === -1)
+      if (messages.indexOf(lastMessage) === -1) {
         this.setState({
           messages: [...messages, lastMessage]
         });
+        return false;
+      }
     }
-    console.log(messages);
     if (socketEvent.type === "add user") {
       const lastMessage = {
         message: [
@@ -67,10 +68,13 @@ class ChatPage extends Component {
           }`
         ]
       };
-      if (!messages.find(item => item.message[0] === lastMessage.message[0]))
+      if (!messages.find(item => item.message[0] === lastMessage.message[0])) {
         this.setState({
           messages: [...messages, lastMessage]
         });
+
+        return false;
+      }
     }
     if (socketEvent.type === "remove user") {
       const lastMessage = {
@@ -80,11 +84,19 @@ class ChatPage extends Component {
           }`
         ]
       };
-      if (!messages.find(item => item.message[0] === lastMessage.message[0]))
+      if (!messages.find(item => item.message[0] === lastMessage.message[0])) {
         this.setState({
           messages: [...messages, lastMessage]
         });
+        return false;
+      }
     }
+    return true;
+  }
+
+  render() {
+    const { currentUser } = this.props;
+    const { message, messages } = this.state;
     return (
       <div className="page">
         <div className="container" ref={node => (this.messageList = node)}>

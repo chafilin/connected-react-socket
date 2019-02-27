@@ -18,20 +18,20 @@
 .container {
   padding: 1.5rem 2rem;
   overflow: scroll;
-  height: calc(100vh-88px);
+  height: calc(100vh-72px);
 }
 
 footer {
   padding: 16px;
   display: flex;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
+  padding-top: 0;
 }
 
 .page {
   height: 100vh;
-  background-color: gray;
 }
 
 .username {
