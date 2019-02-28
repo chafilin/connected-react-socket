@@ -172,4 +172,4 @@ Apply `socketMiddleware(socket)` to store. Where `socket` is your socket.io inst
 
 # Feedback
 
-Fill free to create an issue or write me to chafiliny@gmail.com
+Feel free to create an issue or write me to chafiliny@gmail.com
