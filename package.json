@@ -12,7 +12,6 @@
     "redux"
   ],
   "scripts": {
-    "start": "node ./examples/connected",
     "build": "babel src -d dist --copy-files",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
