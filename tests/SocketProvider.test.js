@@ -33,11 +33,8 @@ describe("Socket provider", () => {
     })
 
     it("should add set payload in state", () => {
-      const message = {
-        data: ["hello", "world"],
-      }
-      const payload = { type: "hello", data: ["world"] }
-      props.socket.onevent(message)
+      const payload = { type: "an event", data: ["world"] }
+      props.socket.onevent("an event", "world")
       expect(wrapper.state("payload")).toEqual(payload)
     })
 
@@ -65,7 +62,7 @@ describe("Socket provider", () => {
     })
     it("should close on unmount", () => {
       wrapper.unmount()
-      expect(props.socket.close).toBeCalled()
+      expect(props.socket.close.mock.calls.length).toBe(0)
     })
   })
 })
