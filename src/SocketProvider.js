@@ -18,7 +18,7 @@ class SocketProvider extends React.Component {
       socket.open()
     }
     socket.onevent = msg => {
-      const [type, ...data] = msg.data
+      const [type, data] = msg.data
       const payload = {
         type,
         data,
@@ -31,7 +31,6 @@ class SocketProvider extends React.Component {
     if (shouldDisconnect) {
       socket.close()
     }
-    socket.close()
   }
   render() {
     const { children, socket } = this.props
