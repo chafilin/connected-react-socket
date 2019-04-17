@@ -33,8 +33,8 @@ describe("Socket provider", () => {
     })
 
     it("should add set payload in state", () => {
-      const payload = { type: "an event", data: ["world"] }
-      props.socket.onevent("an event", "world")
+      const payload = { "an event":["world"] }
+      props.socket.onevent({data:["an event", "world"]})
       expect(wrapper.state("payload")).toEqual(payload)
     })
 

@@ -38,7 +38,7 @@ describe("Connected socket", () => {
       const message = {
         data: ["hello", "world"],
       }
-      const payload = { type: "hello", data: ["world"] }
+      const payload = { hello: ["world"] }
       props.socket.onevent(message)
       expect(handleSocketAction).toBeCalledWith(payload)
     })
@@ -69,7 +69,7 @@ describe("Connected socket", () => {
       const message = {
         data: ["hello", "world"],
       }
-      const payload = { type: "hello", data: ["world"] }
+      const payload = { "hello": ["world"] }
       props.socket.onevent(message)
       expect(handleSocketAction).toBeCalledWith(payload)
     })
