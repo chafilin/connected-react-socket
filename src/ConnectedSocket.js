@@ -13,11 +13,9 @@ export class ConnectedSocket extends React.Component {
     if (shouldReconnect) {
       socket.open()
     }
-    socket.onevent = msg => {
-      const [type, ...data] = msg.data
+    socket.onevent = ({data}) => {
       const payload = {
-        type,
-        data,
+        [data[0]]:data.slice(1),
       }
       dispatch(handleSocketAction(payload))
     }

@@ -17,10 +17,9 @@ class SocketProvider extends React.Component {
     if (shouldReconnect) {
       socket.open()
     }
-    socket.onevent = (type, ...data) => {
+    socket.onevent = ({data}) => {
       const payload = {
-        type,
-        data,
+        [data[0]]: data.slice(1),
       }
       this.setState({ payload })
     }
