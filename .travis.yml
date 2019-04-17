@@ -2,6 +2,10 @@ language: node_js
 node_js:
 - node
 
+script: yarn build
+
+after_success: yarn test
+
 before_deploy: 'yarn build'
 
 deploy:
