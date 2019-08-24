@@ -9,9 +9,9 @@ Lightweight Provider for socket.io connection for react-redux application. You c
 ## Contents
 
 - [Install](#install)
-- [Props](#props)
 - [ConnectedSocket](#connectedsocket)
 - [SocketProvider](#socketprovider)
+- [Props](#props)
 - [Passed props](#passed-props)
 - [Redux connection](#redux-connection)
 - [Feedback](#feedback)
