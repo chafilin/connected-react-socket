@@ -8,13 +8,15 @@ Lightweight Provider for socket.io connection for react-redux application. You c
 
 ## Contents
 
-- [Usage](#usage)
+- [Install](#install)
 - [Props](#props)
+- [ConnectedSocket](#connectedsocket)
+- [SocketProvider](#socketprovider)
 - [Passed props](#passed-props)
 - [Redux connection](#redux-connection)
 - [Feedback](#feedback)
 
-## Usage
+## Install
 
 install it by
 
@@ -28,7 +30,7 @@ or
 yarn add  connected-react-socket
 ```
 
-### ConnectedSocket
+## ConnectedSocket
 
 Add socket middleware with passing socket client
 
@@ -91,7 +93,7 @@ Last one: dd socket provider under the redux provider
 ...
 ```
 
-### SocketProvider
+## SocketProvider
 
 Create component and wrap it with HOC
 
