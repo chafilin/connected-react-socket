@@ -12,9 +12,6 @@
     "redux"
   ],
   "scripts": {
-    "demoserver": "node ./demo/server",
-    "demo": "webpack-dev-server --mode development",
-    "start": "yarn demoserver | yarn demo",
     "build": "babel src -d dist --copy-files",
     "test": "jest --coverage",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
